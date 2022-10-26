@@ -6,7 +6,7 @@
 // Base abstract class for window creation
 class Window {
 public:
-	GLFWwindow* window;
+
 	virtual void RenderScreen() = 0;
 	void InitWindow(const char* title)
 	{
@@ -24,4 +24,6 @@ public:
 		if (GLEW_OK != glewInit()) { ERROR_LOG("Failed to init glew") }
 
 	}
+protected:
+	GLFWwindow* window;
 };

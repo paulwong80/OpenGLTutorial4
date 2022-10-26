@@ -29,6 +29,7 @@ public:
 	void initUI()
 	{
 		glfwSetKeyCallback(this->window, KeyCallback);
+		glfwSetFramebufferSizeCallback(this->window, FramebufferSizeCallback);
 	}
 	void CreateObjects()
 	{
@@ -39,6 +40,10 @@ public:
 	{
 		pshader = new Shader("res/shaders/core.vs", "res/shaders/core.fs");
 
+	}
+	bool IsWindowClosed()
+	{
+		return glfwWindowShouldClose(window);
 	}
 private:
 	GLuint VAO=-1;
@@ -63,6 +68,11 @@ private:
 		{
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
+	}
+	static void FramebufferSizeCallback(GLFWwindow
+		* window, int width, int height)
+	{
+		glViewport(0, 0, width, height);
 	}
 
 };

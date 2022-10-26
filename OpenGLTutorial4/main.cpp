@@ -13,16 +13,6 @@
 #include "Tutorial.h"
 
 
-
-
-
-static void SetViewport(GLFWwindow* window)
-{
-	int screenWidth, screenHeight;
-	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
-	glViewport(0, 0, screenWidth, screenHeight);
-}
-
 int main()
 {
 	Tutorial tutorial;
@@ -30,9 +20,8 @@ int main()
 	tutorial.initUI();
 	tutorial.CreateObjects();
 	tutorial.CreateShaders();
-	while (!glfwWindowShouldClose(tutorial.window))
+	while (!tutorial.IsWindowClosed())
 	{
-		SetViewport(tutorial.window);
 		tutorial.RenderScreen();
 	}
 
